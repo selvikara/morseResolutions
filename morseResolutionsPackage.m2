@@ -148,8 +148,8 @@ possibleEdges(Sequence) := List => S -> (
 	B=append(B,delete (A_i_0, A_i));
 	);
     return B;
-    )
-    )
+    );
+    
 
 -----------------------------------------
 --Barile-Macchia Matching-
