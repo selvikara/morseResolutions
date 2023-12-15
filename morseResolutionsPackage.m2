@@ -1,4 +1,4 @@
-print packageTemplate "MorseResolutions"
+
 newPackage(
     "MorseResolutions",
     Version => "1.0.1",
@@ -20,7 +20,7 @@ newPackage(
 	    Email => "aokeefe@conncoll.edu ", 
 	    HomePage => "https://www.conncoll.edu/directories/faculty-profiles/augustine-okeefe/"
 	    },
-	},
+	}
     AuxiliaryFiles => false,
     DebuggingMode => false
     )
@@ -148,8 +148,8 @@ possibleEdges(Sequence) := List => S -> (
 	B=append(B,delete (A_i_0, A_i));
 	);
     return B;
-    );
-    
+    )
+    )
 
 -----------------------------------------
 --Barile-Macchia Matching-
@@ -415,7 +415,8 @@ trimmedRanks(Sequence, Sequence) := List => (S1,S2) -> (
 ----------------------------------------
 beginDocumentation()
 
-doc ///
+doc///
+Node
 Key
    MorseResolutions
 Headline
@@ -447,35 +448,46 @@ Description
     
     Here is a typical use of this package. We create an ideal in 4 variables with the total order described 
     in the sequence $S$. 
-      
-  Example
-     R=QQ[a,b,c,d];
-     S = (c*d, b*c, a*b, a*d);
-     I=ideal(S)
-     bMMatching(S);
-     bMRanks(S);
-     lyubeznikMatching(S);
-     lyubeznikRanks(S);
-     bridgeFriendlyList(I);
-     trimmedMatching(S);
      
 Acknowledgement
     We thank Jeremy Dewar for helpful discussions.
 References
     [CK] T. Chau and S. Kara, Barile-Macchia Resolutions. Preprint, @arXiv "2211.04640"@ (2022).
-    [BW] E. Batzies and V. Welker, Discrete Morse theory for cellular resolutions, J. Reine Angew. Math. 543 (2002).    
+    [BW] E. Batzies and V. Welker, Discrete Morse theory for cellular resolutions, J. Reine Angew. Math. 543 (2002).  
+Subnodes
+          taylorCell
+          allTaylorCells
+          bridge
+          smallestBridge
+          possibleEdgesWithPositions
+          possibleEdges
+          bMMatching
+          bridgeFriendly
+          criticalBMCells
+          bMRanks
+          lyubeznikBridge
+          lyubeznikMatching
+          criticalLyubeznikCells
+          lyubeznikRanks
+          possibleTrimmedEdges
+          trimmedMatching
+          criticalTrimmedCells
+          trimmedRanks
 ///
 
 
 
-doc ///
+
+
+
+
+doc///
+Node 
 Key
     taylorCell 
-    taylorCell(Ideal,ZZ)  
+    (taylorCell, Ideal, ZZ)  
 Headline
     prints all subsets of a fixed cardinality $n$ of a minimal generating set of the given monomial ideal $I$
-    prints all faces of a fixed cardinality $n$ of the Taylor complex of $I$
-    
 Usage
     taylorCell(I,n)
 Inputs
@@ -489,7 +501,7 @@ Description
       Given a monomial ideal $I$ and an integer $n$, returns cardinality $n$ subsets of minimal generators of $I$. In other words,
       it returns all $(n-1)$-faces of the Taylor complex of $I$.     
   Example
-      R=QQ[a,b,c,d]
+      R=QQ[a,b,c,d];
       S = (c*d, b*c, a*b, a^2*d);
       I=ideal(S);
       taylorCell(I,2)
@@ -499,12 +511,12 @@ SeeAlso
 
 
 doc ///
+Node 
 Key
     allTaylorCells
-    allTaylorCells(Ideal)  
+    (allTaylorCells, Ideal)  
 Headline
     prints all subsets of a minimal generating set of the given monomial ideal $I$
-    prints all faces of the Taylor complex of $I$
 Usage
     allTaylorCells(I)
 Inputs
@@ -531,9 +543,10 @@ SeeAlso
 -----------------------------
 
 doc ///
+Node 
 Key
     bridge 
-    bridge(List)  
+    (bridge, List)  
 Headline
     prints all bridges of a list of monomials
 Usage
@@ -560,9 +573,10 @@ SeeAlso
 ///
 
 doc ///
+Node 
 Key
     smallestBridge 
-    smallestBridge(List, Sequence)  
+    (smallestBridge, List, Sequence)  
 Headline
     prints the smallest bridge of a list of monomials with respect to a total order
 Usage
@@ -590,9 +604,10 @@ SeeAlso
 ///
 
 doc ///
+Node 
 Key
     possibleEdgesWithPositions 
-    possibleEdgesWithPositions(Sequence)  
+    (possibleEdgesWithPositions, Sequence)  
 Headline
     prints triples that contain  positions of the corresponding smallest bridges associated to possible edges and possible edges
     of the Taylor complex of a monomial ideal with respect to a given total order monomial ideal with respect to a given total 
@@ -650,9 +665,10 @@ SeeAlso
 
 
 doc ///
+Node 
 Key
     possibleEdges 
-    possibleEdges(Sequence)  
+    (possibleEdges, Sequence)  
 Headline
     prints all edges of a Barile-Macchia matching of the Taylor complex of a monomial ideal with respect to a given total order
     before Step 3 of Algorithm 2.6 in [CK]
@@ -682,9 +698,10 @@ SeeAlso
 
 
 doc ///
+Node 
 Key
     bMMatching 
-    bMMatching(Sequence)  
+    (bMMatching, Sequence)  
 Headline
     prints all edges of a Barile-Macchia matching of the Taylor complex of a monomial ideal with respect to a given total order
 Usage
@@ -714,7 +731,7 @@ SeeAlso
 doc ///
 Key
     isBridgeFriendly 
-    isBridgeFriendly(Sequence)  
+    (isBridgeFriendly, Sequence)  
 Headline
     checks whether a monomial ideal $I$ with respect to a total order $S$ on $G(I)$ is bridge-friendly with respect to $S$
 Usage
@@ -744,9 +761,10 @@ SeeAlso
 
 
 doc ///
+Node 
 Key
     friendlyStep 
-    friendlyStep(Sequence)  
+    (friendlyStep, Sequence)  
 Headline
     prints a list such that the first entry in the list is the Barile-Macchia matching of a monomial ideal $I$ with 
     respect to a given total order $S$ on $G(I)$ and the second entry is a Boolean to check if $I$ is 
@@ -778,9 +796,10 @@ SeeAlso
 
 
 doc ///
+Node 
 Key
     bridgeFriendlyList
-    bridgeFriendlyList(Ideal)  
+    (bridgeFriendlyList, Ideal)  
 Headline
     prints a list of all Barile-Macchia matchings of the Taylor complex of a given monomial ideal with respect to total orders 
     for which $I$ is bridge-friendly with respect to each of those total orders.
@@ -823,9 +842,10 @@ SeeAlso
 ///
 
 doc ///
+Node 
 Key
     criticalBMCells 
-    criticalBMCells(Sequence)  
+    (criticalBMCells, Sequence)  
 Headline
     prints all $A$-critical cells of the Taylor complex of a monomial ideal where $A$ is the Barile-Macchia matching of a monomial
     ideal $I$ with respect to a given total order on $G(I)$.
@@ -858,9 +878,10 @@ SeeAlso
 ///
 
 doc ///
+Node 
 Key
     bMRanks 
-    bMRanks(Sequence)  
+    (bMRanks, Sequence)  
 Headline
     prints the ranks of the free modules in the Barile-Macchia resolution of $R/I$ with respect to a total
     order on $G(I)$ where $I$ is a monomial ideal 
@@ -907,9 +928,10 @@ SeeAlso
 -----------------------------
 
 doc ///
+Node 
 Key
     lyubeznikBridge 
-    lyubeznikBridge(List, Sequence)  
+    (lyubeznikBridge, List, Sequence)  
 Headline
     prints the Lyubeznik bridge of a list of monomials with respect to a total order
 Usage
@@ -939,9 +961,10 @@ SeeAlso
 
 
 doc ///
+Node 
 Key
     lyubeznikMatching 
-    lyubeznikMatching(Sequence)  
+    (lyubeznikMatching, Sequence)  
 Headline
     prints all edges of a Lyubeznik matching of a monomial ideal generated by $S$
 Usage
@@ -977,9 +1000,10 @@ SeeAlso
 
 
 doc ///
+Node 
 Key
     criticalLyubeznikCells 
-    criticalLyubeznikCells(Sequence)  
+    (criticalLyubeznikCells, Sequence)  
 Headline
     prints all $A$-critical cells of the Taylor complex of a monomial ideal where $A$ is the Lyubeznik matching of a monomial
     ideal $I$ with respect to a given total order on $G(I)$
@@ -1008,9 +1032,10 @@ SeeAlso
 ///
 
 doc ///
+Node 
 Key
     lyubeznikRanks 
-    lyubeznikRanks(Sequence)  
+    (lyubeznikRanks, Sequence)  
 Headline
     prints the ranks of the free modules in the Lyubeznik resolution of a monomial ideal $I$ with respect to a total
     order on $G(I)$ 
@@ -1057,9 +1082,10 @@ SeeAlso
 -------------------
 
 doc ///
+Node 
 Key
     possibleTrimmedEdges 
-    possibleTrimmedEdges(Sequence,Sequence)  
+    (possibleTrimmedEdges, Sequence, Sequence)  
 Headline
     prints all edges of a Barile-Macchia matching with respect to $S2$ of the Lyubeznik complex of a monomial ideal $I$ with respect to a total
     order $S1$ on $G(I)$ before Step 3) of Algorithm 2.6 in [CK]
@@ -1105,9 +1131,10 @@ SeeAlso
 
 
 doc ///
+Node 
 Key
     trimmedMatching 
-    trimmedMatching(Sequence, Sequence)  
+    (trimmedMatching, Sequence, Sequence)  
 Headline
     prints all edges of a Barile-Macchia matching with respect to $S2$ of the Lyubeznik complex of monomial ideal $I$ with respect to a total
     order $S1$ on $G(I)$
@@ -1143,9 +1170,10 @@ SeeAlso
 ///
 
 doc ///
+Node 
 Key
     criticalTrimmedCells 
-    criticalTrimmedCells(Sequence, Sequence)  
+    (criticalTrimmedCells, Sequence, Sequence)  
 Headline
     prints all critical cells of the Lyubeznik complex of a monomial ideal generated by the given sequence with respect to its Barile-Macchia matching
 Usage
@@ -1182,9 +1210,10 @@ SeeAlso
 ///
 
 doc ///
+Node 
 Key
     trimmedRanks 
-    trimmedRanks(Sequence, Sequence)  
+    (trimmedRanks, Sequence, Sequence)  
 Headline
     prints the ranks of the trimmed Lyubeznik resolution (via Barile-Macchia matching with respect to $S2$) of a monomial ideal $I$ with respect 
     to a total order $S1$ on $G(I)$  
@@ -1378,16 +1407,3 @@ TEST ///
 
 
 end--
-
-----------------------------------------
---Development section
------------------------------------------
-
-restart
-debug needsPackage "MorseResolutions"
-check "MorseResolutions"
-
-uninstallPackage "MorseResolutions"
-restart
-installPackage "MorseResolutions"
-viewHelp "MorseResolutions"
