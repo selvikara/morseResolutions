@@ -149,7 +149,7 @@ possibleEdges(Sequence) := List => S -> (
 	);
     return B;
     )
-    )
+
 
 -----------------------------------------
 --Barile-Macchia Matching-
